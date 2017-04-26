@@ -9,11 +9,11 @@ var fs = require('fs');
 var path = require('path');
 var config = require('./config/config.js');
 
-var offset = fs.readFileSync(path.join(__dirname, '/../resources/misc/offset.txt'), 'utf8') || 0;
+var offset = fs.readFileSync(path.join(__dirname, '/resources/misc/offset.txt'), 'utf8') || 0;
 
 var queryFlickrSearch = queryString.stringify({
     method: 'flickr.photos.search', // Flickr Api method (search)
-    text: fs.readFileSync(path.join(__dirname, '/../search.txt'), "utf8"), // Search
+    text: fs.readFileSync(path.join(__dirname, '/search.txt'), "utf8"), // Search
     format: 'json',
     nojsoncallback: 1,
     api_key: config.apiKeyFlickr, // Flickr api key
