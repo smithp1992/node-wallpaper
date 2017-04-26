@@ -1,0 +1,23 @@
+{
+  "name": "node-wallpaper",
+  "version": "0.0.1",
+  "description": "Creates a service that changes the background to the computer once a day using bing wallpaper.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV='development' node .",
+    "add": "cross-env NODE_ENV='add' node .",
+    "remove": "cross-env NODE_ENV='remove' node ."
+  },
+  "author": "Philip Smith",
+  "license": "ISC",
+  "dependencies": {
+    "q": "^1.5.0",
+    "query-string": "^4.3.3",
+    "request": "^2.81.0",
+    "wallpaper": "^2.4.0",
+    "winreg": "^1.2.3"
+  },
+  "devDependencies": {
+    "cross-env": "^4.0.0"
+  }
+}
