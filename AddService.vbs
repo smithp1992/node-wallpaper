@@ -7,5 +7,5 @@ Set file = fso.GetFile(Wscript.ScriptFullName)
 currentDir = fso.GetParentFolderName(file)
 
 ' Go to project directory and execute npm run start
-oShell.run "cmd.exe /c cd """ & currentDir & """ && npm run start", 0
+oShell.run "cmd.exe /c cd """ & currentDir & """ && npm run add & PAUSE", 1
 Set oShell = Nothing

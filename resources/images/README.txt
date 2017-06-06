@@ -1,0 +1,1 @@
+Images files for background will be stored here

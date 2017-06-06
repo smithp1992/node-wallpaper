@@ -7,7 +7,7 @@
 var queryString = require('query-string');
 var fs = require('fs');
 var path = require('path');
-var config = require('./config/config.js');
+// var config = require('./config/config.js');
 
 var offset = fs.readFileSync(path.join(__dirname, '/resources/misc/offset.txt'), 'utf8') || 0;
 
@@ -16,7 +16,8 @@ var queryFlickrSearch = queryString.stringify({
     text: fs.readFileSync(path.join(__dirname, '/search.txt'), "utf8"), // Search
     format: 'json',
     nojsoncallback: 1,
-    api_key: config.apiKeyFlickr, // Flickr api key
+    // api_key: config.apiKeyFlickr, // Flickr api key
+    api_key: "",
     group_id: '40961104@N00', // Group to search from
     sort: 'relevance', // Get the most interesting first
     per_page: 1, // Amount per page
