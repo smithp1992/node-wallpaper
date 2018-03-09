@@ -36,7 +36,6 @@ q.fcall(function () {
     }
 }).then(function () {
     return api.getBingImage();
-    // return api.getFlickrSearchImage();
 }).then(function (format) {
     return api.setWallpaper(format);
     // api.getWallpaper();

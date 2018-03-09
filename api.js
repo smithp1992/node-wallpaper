@@ -34,44 +34,6 @@ api.getBingImage = function () {
     });
 };
 
-api.getFlickrSearchImage = function () {
-    return q.Promise(function (resolve, reject, notify) {
-        request(config.urlFlickrSearch, function (error, response, body) {
-            if (error) reject(error);
-            body = JSON.parse(body);
-            fs.writeFileSync(path.join(__dirname, '/resources/misc/offset.txt'), body.photos.total);
-            request(config.urlFlickrInfo(body.photos.photo[0]), function (error, response, body) {
-                if (error) reject(error);
-                var jsonImage = JSON.parse(body).photo;
-                var url;
-                if (jsonImage.originalformat) {
-                    url = 'https://farm' + jsonImage.farm + // farm-id
-                        '.staticflickr.com/' + jsonImage.server + // server-id
-                        '/' + jsonImage.id + // image-id
-                        '_' + jsonImage.originalsecret + // secret
-                        '_o.' + jsonImage.originalformat; // Image format of original photo
-                }
-                else {
-                    jsonImage.originalformat = 'jpg';
-                    url = 'https://farm' + jsonImage.farm + // farm-id
-                        '.staticflickr.com/' + jsonImage.server + // server-id
-                        '/' + jsonImage.id + // image-id
-                        '_' + jsonImage.secret + // secret
-                        '_h.' + jsonImage.originalformat; // Image format of original photo
-                }
-                var writeStream = fs.createWriteStream('resources/images/ImageOfTheDay.' + jsonImage.originalformat);
-                request(url).pipe(writeStream); // size of image (h=large)
-                writeStream.on('finish', function () {
-                    resolve(jsonImage.originalformat);
-                });
-                writeStream.on('error', function () {
-                    reject("Unable to write to file");
-                });
-            });
-        });
-    });
-};
-
 // Set desktop wallpaper
 api.setWallpaper = function (format) {
     return wallpaper.set('./resources/images/ImageOfTheDay.' + format, {scale: 'fill'});
