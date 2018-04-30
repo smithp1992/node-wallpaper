@@ -8,7 +8,7 @@ var queryString = require('query-string');
 var path = require('path');
 var Winreg = require('winreg');
 var fs = require('fs');
-var config = require('./requests.js');
+var config = require('./config.js');
 var api = {};
 
 var hKey = new Winreg({
