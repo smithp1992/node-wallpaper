@@ -4,7 +4,7 @@
   "description": "Creates a service that changes the background to the computer once a day using bing wallpaper.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV='development' node .",
+    "start": "sleep 30 && cross-env NODE_ENV='development' node .",
     "add": "cross-env NODE_ENV='add' node .",
     "remove": "cross-env NODE_ENV='remove' node ."
   },
